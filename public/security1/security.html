@@ -252,33 +252,72 @@
         <p>We will try all three forms in today's demo's</p>
       </article>
     </slide>
-
     <slide>
       <hgroup>
-        <h2>The Simple Site We are going to Hack</h2>
+        <h2>About todays hacking</h2>
       </hgroup>
       <article>
-
-        <div class="row" style="margin-top: 1em;">
-          <div class="col-md-5">
-            <br/>
-            <br/>
-            <br/>
-            <ul>
-              <li>Users will "login" by providing their name and a secret to simulate users personal data (yellow)</li>
-              <li>All "logged in" users will se a page with their name + secret (yellow) and a list of all other users (green)
-              </li>
-            </ul>
-          </div>
-
-          <div class="col-md-7">
-            <img style="width: 100%;" src="images/aboutSiteToHack.PNG" />
-          </div>
-
-        </div>
+        <p>In order to hack a site there must be something the hacker tries to obtain.</p>
+        <p>In most of the following demos the hacker(we/us) will try to steal the
+          <code>session-id</code> which (temporarily) is almost as good as stealing the password (why?).</p>
+        <p>The attacks we will do in the following will involve (as a minimum) the following “dirty tricks”:</p>
+        <ul>
+          <li>SessionID stealing</li>
+          <li>Phishing</li>
+          <li>XSS in different forms </li>
+        </ul>
+        <p>This is the
+          <a href="https://github.com/Lars-m/xssServer.git">Server</a> we are going to hack</p>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2>Refresh on sessions before we start</h2>
+      </hgroup>
+      <article>
+        <ul class="build">
+          <li>What is WEB-sessions, and why do we need them?</li>
+          <li>How can sessions be implemented (what does Tomcat do by default)?</li>
+          <li>
+            <div>How can session id's be stolen?</br>
+              <img src="images/sessionStealing.PNG" />
+            </div>
+          </li>
+          <li>Why is session timeouts important, and how can we set it (with Java/Tomcat)</li>
+        </ul>
       </article>
     </slide>
 
+    <slide>
+      <hgroup>
+        <h2>Reflected XSS and Phishing</h2>
+      </hgroup>
+      <article>
+        <img src="../images/Demo.png" style="float:left"/>
+        <p style="float:left;font-size: 3em;margin-top:1em;">Demo 1 </p>
+      </article>
+    </slide>
+    
+    <slide>
+      <hgroup>
+        <h2>Stored XSS</h2>
+      </hgroup>
+      <article>
+        <img src="../images/Demo.png" style="float:left"/>
+        <p style="float:left;font-size: 3em;margin-top:1em;">Demo 2 </p>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2>Stored XSS and Session hi-jacking</h2>
+        <h3>Now it is your turn</h3>
+      </hgroup>
+      <article>
+        <img src="../images/Demo.png" style="float:left"/>
+        <p style="float:left; margin-top:1em;">This will be a competition where your task is to steal the secrets of other users 
+          (similar to the video you watched before today) </p>
+      </article>
+    </slide>
     <slide>
       <hgroup>
         <h2>Hacker Architecture for this Demo/exercise/competition</h2>
@@ -323,130 +362,33 @@
     </script>
 
 
-    <slide>
-      <hgroup>
-        <h2>Sessions, Session Hijacking and XSS</h2>
-      </hgroup>
-      <article>
-        <div class="row" style="margin-top: 1em;">
-          <p>Before we start, lets recap on the topics:</p>
-          <ul>
-            <li>Sessions (one more time)</li>
-            <li>Session Hijacking</li>
-            <li>XSS (Cross Site Scripting)</li>
-          </ul>
-          <p> Login to this site:
-            <a id="url0" href=""></a>
-          </p>
-          <p style="color: darkred">PLEASE don't do anything else than what your are asked to (you will get your chance)
-          </p>
-        </div>
-      </article>
-    </slide>
-
+    
 
     <slide>
       <hgroup>
-        <h2>Basic (Web) Security Threads</h2>
-        <h3>Cross Site Scripting (XSS) Discussion</h3>
+        <h2>Hacker Competition</h2>
       </hgroup>
-      <article style="margin-top: 10px;">
+      <article style="margin-top: 30px;">
         <div class="row">
-
-          <div class="col-md-6" style="font-size: 0.8em;">
-            <p>This site is an
-              <b>extremely silly</b> implementation of a session based system. It:</p>
-            <ul>
-              <li>Writes back user input (user name) to all users without sanitization</li>
-              <li>It uses session cookies with the property httpOnly = false</li>
-            </ul>
-            <h2>Competition</h2>
+          <div class="col-md-8">
+            
             <img style="width:35%; margin-top: -0px;" src="images/competition.jpg">
+            <p>First one to:</p>
             <ul>
-              <li>First one to crack a sessionID:
-                <b>2 small beers</b>
-              </li>
-              <li>First one to discover a secret:
-                <b>One Large BEER :-)</b>
-              </li>
+              <li>Steal a sessionID:</li>
+              <li>Discover/reveal a secret</li>
+              <li>Explains the strategy uses,step by step</li>
             </ul>
+            <span>Wins the price</span> 
+            <img src="../images/smileyBlink.jpg" style="width: 75px;"/>
           </div>
-          <div class="col-md-6">
-            <div style="font-size: 0.6em;">
-              <p>URL for the embedded (iframe) page below is:
-                <br/>
-                <a id="url1" href=""></a>
-              </p>
-              <p>So if you succeed in stealing a SessionID, use POSTMAN to log on to this site using this SessionID </p>
-            </div>
-            <iframe src="/session2" style=height:400px;width:100%;float:left;background-color:#e6e6e6; "></iframe>
-        </div>
+          <div class="col-md-4">
+           <img src="images/grimbergen-double-ambrée-75-cl.jpg" style="width:90%"/>
+          </div>
       </div>
     </article>
   </slide>
-  <script>
-
-    var myVar = null;
-    $(document).ready(function () {
-      $("#span ").hide();
-    })
-    function listen() {
-      if (myVar === null) {
-        myVar = setInterval(dataFetcher, 5000);
-        $("#span ").show();
-      }
-    }
-
-    function stopListen() {
-      clearInterval(myVar);
-      myVar = null;
-      $("#span ").hide();
-    }
-
-    function dataFetcher() {
-      $.get("/hackerInfo ", function (data) {
-        var d = " ";
-        data.forEach(function (hackerItem) {
-          d += hackerItem + "<br/>";
-        }); $("#hackerData").html(d);
-      });
-    }
-
-
-  </script>
-            <slide>
-              <hgroup>
-                <h2>Hackers Help Page</h2>
-              </hgroup>
-
-              <article style="margin-top: 25px;">
-                <div class="row">
-                  <div class="col-md-7" style="font-size: 0.7em;">
-                    <button class="btn btn-primary" id="btnStart" onclick="listen()">Listen</button>
-                    <button id="btnEnd" class="btn btn-danger" onclick="stopListen()">Stop</button>
-                    <span id="span" style="color: #3c763d">&nbsp;Listening</span>
-                    <p>My server provides you with a little help for your hacking attempts. You can very easily send a message
-                      via this URL:</p>
-                    <p id="url2" style="color: darkblue"></p>
-                    <p>You can monitor all messages being sent to this page by pressing "listen"
-                      <b>TRY</b>
-                    </p>
-                    <p>You can send a HTTP request using plain JavaScript as sketched below:</p>
-                    <pre class="prettyprint pre14">
-&lt;script&gt;
-var xmlHttp = new XMLHttpRequest();
-xmlHttp.open(&quot;GET&quot;,"<span id="url3"></span>+");
-xmlHttp.send();
-&lt;/script&gt;</pre>
-                    <p>If the backend developers has been stupid enough you can read (session) cookies like:</p>
-                    <pre class="prettyprint pre14">
-console.log(document.cookie); </pre>
-
-                  </div>
-                  <div class="col-md-5" id="hackerData" style="height:400px;overflow-y: auto;font-size: 0.6em;"></div>
-                </div>
-              </article>
-            </slide>
+  
 
             <slide>
               <hgroup>
@@ -475,11 +417,11 @@ console.log(document.cookie); </pre>
                 </div>
               </article>
             </slide>
-
+<!--
             <slide>
               <hgroup>
-                <h2>Basic Security Threads</h2>
-                <h3>Cross-Site Request Forgery (CSRF) </h3>
+                
+                <h2>Cross-Site Request Forgery (CSRF) </h2>
               </hgroup>
               <article style="font-size: .9em;">
                 <p style="margin-top: -25px;">
@@ -595,7 +537,7 @@ console.log(document.cookie); </pre>
               </article>
             </slide>
 
-
+          -->
 
 
             <slide class="nobackground" style="background: #00163B">
