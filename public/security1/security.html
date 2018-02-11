@@ -243,13 +243,16 @@
             <p>The application or API stores unsanitized user input that is viewed at a later time by another user or an administrator.
               Stored XSS is often considered a high or critical risk</p>
           </li>
-          <li><b>DOM XSS:</b><p>JavaScript frameworks, single-page applications, and APIs that dynamically 
-            include attacker-controllable data to a page are vulnerable to DOM XSS.</p></li>
+          <li>
+            <b>DOM XSS:</b>
+            <p>JavaScript frameworks, single-page applications, and APIs that dynamically include attacker-controllable data
+              to a page are vulnerable to DOM XSS.</p>
+          </li>
         </ul>
         <p>We will try all three forms in today's demo's</p>
       </article>
     </slide>
-    
+
     <slide>
       <hgroup>
         <h2>The Simple Site We are going to Hack</h2>
@@ -592,120 +595,7 @@ console.log(document.cookie); </pre>
               </article>
             </slide>
 
-            <slide>
-              <hgroup>
-                <h2>Basic Security Threads</h2>
-                <h3>SQL Injection Discussion</h3>
-              </hgroup>
-              <article>
-                <div style="margin: 1em; font-size: 2em;">
-                  <ul>
-                    <li>What is SQL Injection (
-                      <a href="https://www.owasp.org/index.php/SQL_Injection">*</a>)</li>
-                    <li>How Do we Avoid it</li>
-                    <li>JPA and SQL Injection (
-                      <a href="http://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-persistence-api-jpa">
-                        *)</a>
-                    </li>
-                  </ul>
-                </div>
-              </article>
-            </slide>
-            <script>
-              $(function () {
-                $("#mongoFrame").hide();
-              })
-              function show() {
-                $("#mongoFrame").toggle();
-              }
-            </script>
-            <slide>
-              <hgroup>
-                <h2>Basic (Web) Security Threads</h2>
-                <h3>"SQL" Injection and MongoDB Discussion</h3>
-              </hgroup>
-              <article style="margin-top: 10px;">
 
-                <div>
-                  <span style="font-size: 1.4em;">Is MongoDB vulnerable to "SQL Injection Like" attacks?</span>
-                  <button class="btn-lg btn-warning" onclick="show()">?</button>
-                </div>
-
-                <iframe id="mongoFrame" data-src="https://duckduckgo.com/?q=mongodb+sql+injection&t=h_&ia=qa" class="scaled_iframe" style="height: 500px;width:100%;"></iframe>
-
-
-              </article>
-            </slide>
-
-            <slide>
-              <hgroup>
-                <h2>Basic Security Threads</h2>
-                <h3>3rd part dependencies</h3>
-              </hgroup>
-              <article>
-
-                <div class="row" style="margin-top: -30px;">
-                  <a href="http://www.infoworld.com/article/2626167/data-security/third-party-code-putting-companies-at-risk.html">
-                    <img src="images/thirdParty1.PNG" style="width: 60%;box-shadow: 5px 5px 5px #888888;">
-                  </a>
-                  <br>
-                  <br>
-                  <a href="http://betanews.com/2014/10/08/professionals-believe-their-java-apps-are-secure-despite-relying-on-third-party-code/"
-                    style="margin-left:6em; ">
-                    <img src="images/thirdParty2.PNG" style="width: 60%;box-shadow: 5px 5px 5px #888888;">
-                  </a>
-                  <br/>
-                  <br>
-                  <a href="http://techbeacon.com/third-party-libraries-are-one-most-insecure-parts-application" style="margin-left: 12em;">
-                    <img src="images/thirdParty3.PNG" style="width: 50%;box-shadow: 5px 5px 5px #888888;">
-                  </a>
-                  <br>
-                  <br/>
-                  <a href="http://www.waratek.com/two-thirds-of-enterprise-java-applications-contain-mostly-third-party-code-yet-considered-secure/"
-                    style="margin-left: 5em;">
-                    <img src="images/thirdParty4.PNG" style="width: 60%;box-shadow: 5px 5px 5px #888888;">
-                  </a>
-                </div>
-
-              </article>
-            </slide>
-
-            <slide>
-              <hgroup>
-                <h2>Basic Security Threads</h2>
-                <h3>Discussion &rightarrow; How do you ensure your 3rd part dependencies are secure</h3>
-              </hgroup>
-              <article>
-
-                <ul style="font-size: 1.3em;">
-                  <li>In Java how do we ensure that our 3rd party dependencies are secure? (
-                    <a href="https://www.owasp.org/index.php/OWASP_Dependency_Check">*</a>)
-                    </a>
-                  </li>
-                  <br/>
-                  <li>
-                    With Node, Express and the "billion" packages on
-                    <em>npm</em>, how do we ensure they are secure? (
-                    <a href="https://nodesecurity.io/">*</a>)
-                  </li>
-                </ul>
-              </article>
-            </slide>
-
-            <slide>
-              <hgroup>
-                <h2>Basic (Web)Security Threads</h2>
-                <h3>Node/Express - Best Security Practices</h3>
-              </hgroup>
-              <article>
-                <p>If you forget everything we have talked about up until now (you don't ;-) DON't forget this link:</p>
-
-                <br/>
-                <div style="font-size: 1.7em">
-                  <a href="http://expressjs.com/en/advanced/best-practice-security.html">Express, best Practices Security</a>
-                </div>
-              </article>
-            </slide>
 
 
             <slide class="nobackground" style="background: #00163B">

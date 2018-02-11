@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('slidesNode');
+var debug = require('debug')('slideSecurity');
 var app = require('../app');
 var http = require('http');
 
@@ -20,10 +20,11 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+console.log(port,ip)
 server.listen(port,ip);
 server.on('error', onError);
-server.on('listening', onListening);
+server.on('listening', ()=>console.log("Listening on Port: "+server.address().port+", bound to : "+server.address().address));
+server.p
 
 /**
  * Normalize a port into a number, string, or false.
@@ -77,12 +78,12 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
-function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
-  debug('Listening on ' + bind);
-  console.log("Listening on: "+bind);
-  console.log("Bound to: "+addr.ip);
-}
+// function onListening() {
+//   var addr = server.address();
+//   var bind = typeof addr === 'string'
+//     ? 'pipe ' + addr
+//     : 'port ' + addr.port;
+//   debug('Listening on ' + bind);
+//   console.log("Listening on: "+bind);
+//   console.log("Bound to: "+addr.ip);
+// }
