@@ -63,7 +63,8 @@
       <article class="build">
         <div class="row">
           <div class="col-md-8">
-            <p style="clear: both;font-style: italic;color: #2a6496">"There are only two types of companies: those that have been hacked and those that will be.
+            <p style="clear: both;font-style: italic;color: #2a6496">"There are only two types of companies: those that have
+              been hacked and those that will be.
               <br/> And even they are converging into one category: companies that have been hacked and will be hacked again."
             </p>
             <p>A popular rephrase ;-)</p>
@@ -111,8 +112,8 @@
           <div class="col-md-6">
             <br/>
             <br/> BUT you can
-            <b>literally go to jail</b> for trying something like this, without the (very clear) acceptance from the owner of
-            a site
+            <b>literally go to jail</b> for trying something like this, without the (very clear) acceptance from the owner
+            of a site
           </div>
           <div class="col-md-6">
             <img style="width: 60%;margin: 1em;" src="images/jail.jpg" />
@@ -124,19 +125,22 @@
 
     <slide>
       <hgroup>
-        <h2>Topics for this week (two days)</h2>
+        <h2>Topics for today</h2>
       </hgroup>
       <article>
         <div>
           <p>An introduction to the OWASP top 10-2017 threads:</p>
-          <ul style="font-size:45px;margin-left:2em;margin-top:1em;">
-            <li>
-              <a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication">A2</a> - Broken Authentication</li>
-            <li>
-              <a href="https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control">A5</a> - Broken Access Control</li>
-            <li>
-              <a href="https://www.owasp.org/index.php/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">A7</a> - Cross-Site Scripting (XSS)</li>
+          <a href="https://www.owasp.org/index.php/Top_10-2017_A7-Cross-Site_Scripting_(XSS)">A7 - Cross-Site Scripting</a>
+        </div>
+        </br>
+        <div>
+          Acording to the OWASP A7 description, Cross Site Scripting is:
+          <ul>
+            <li> the <b>second most prevalent</b> issue in the OWASP Top 10, and is found in around <b>two thirds</b> of
+              all applications.</li>
+            <li>The impact of XSS is moderate for reflected and DOM XSS, and <b>severe for stored XSS</b></li>
           </ul>
+          <h2>So Why is XSS only listed as OWASP-Risk 7?</h2>
         </div>
       </article>
     </slide>
@@ -178,39 +182,31 @@
       <article>
         <div>
           <img style="margin-left: 45px;width:80%;margin-bottom: 15px;" src="images/risk10.PNG">
-          <p> OWASP (2017) Security Risk's ordered to those weaknesses that typically introduce the most significant risk to
-            an application. </br>These factors get updated with each new Top 10 release as things change and evolve</p>
+          <p> OWASP (2017) Security Risk's ordered to those weaknesses that typically introduce the most significant risk
+            to an application. </br>These factors get updated with each new Top 10 release as things change and evolve</p>
         </div>
       </article>
     </slide>
     <slide>
       <hgroup>
-        <h2>Broken Authentication A2</h2>
-        <h3>Discussion</h3>
+        <h2>Things (Threats) change over time</h2>
+        <h3>Class Exercise</h3>
       </hgroup>
       <article>
-        <div style="font-size: 2em;text-align: center">
-          <a href="https://www.owasp.org/index.php/Top_10-2017_A2-Broken_Authentication">A2</a>
-          </br>
-          </br>
-          <p>Broken Authentication</p>
+        <div style="margin-top: -30px">
+          What happend to the OWASP Risk's <b>Cross Site Scripting</b> and <b>Cross Site Request Forgery</b> from 2010-2017?
+        </div>
+        <div style="font-size: 2em;text-align: center; margin-top:25px;">
+          <ul>
+            <li><a href="https://www.owasp.org/index.php/Top_10_2010-Main">OWASP Top-10, 2010</a></li>
+            <li><a href="https://www.owasp.org/index.php/Top_10_2013-Top_10">OWASP Top-10, 2013</a></li>
+            <li><a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">OWASP Top-10, 2017</a></li>
+          </ul>
+         
         </div>
       </article>
     </slide>
-    <slide>
-      <hgroup>
-        <h2> Broken Access Control A5</h2>
-        <h3>Discussion</h3>
-      </hgroup>
-      <article>
-        <div style="font-size: 2em;text-align: center">
-          <a href="https://www.owasp.org/index.php/Top_10-2017_A5-Broken_Access_Control">A5</a>
-          </br>
-          </br>
-          <p> Broken Access Control</p>
-        </div>
-      </article>
-    </slide>
+   
     <slide>
       <hgroup>
         <h2> Cross-Site Scripting (XSS) A7</h2>
@@ -230,9 +226,9 @@
         <h2>Cross-Site Scripting (XSS)</h2>
       </hgroup>
       <article>
-        <p>Acording to OWASP, there are three forms of XSS, usually targeting user's browsers</p>
-        <ul>
-          </li>
+        <p style="margin-top: -25px;">Acording to OWASP, there are three forms of XSS, usually targeting user's browsers</p>
+        <ul class="build">
+          <li>
           <b>Reflected XSS:</b>
           <p>The application or API includes unvalidated and unescaped user input as part of HTML output. A successful attack
             can allow the attacker to execute arbitrary HTML and JavaScript in the victim’s browser. Typically the user will
@@ -240,8 +236,8 @@
           </li>
           <li>
             <b>Stored XSS:</b>
-            <p>The application or API stores unsanitized user input that is viewed at a later time by another user or an administrator.
-              Stored XSS is often considered a high or critical risk</p>
+            <p>The application or API stores unsanitized user input that is viewed at a later time by another user or an
+              administrator. Stored XSS is often considered a high or critical risk</p>
           </li>
           <li>
             <b>DOM XSS:</b>
@@ -249,7 +245,7 @@
               to a page are vulnerable to DOM XSS.</p>
           </li>
         </ul>
-        <p>We will try all three forms in today's demo's</p>
+        <p>We will try, and just as important, introduce/discuss all three forms in today's demo's</p>
       </article>
     </slide>
     <slide>
@@ -293,17 +289,17 @@
         <h2>Reflected XSS and Phishing</h2>
       </hgroup>
       <article>
-        <img src="../images/Demo.png" style="float:left"/>
+        <img src="../images/Demo.png" style="float:left" />
         <p style="float:left;font-size: 3em;margin-top:1em;">Demo 1 </p>
       </article>
     </slide>
-    
+
     <slide>
       <hgroup>
         <h2>Stored XSS</h2>
       </hgroup>
       <article>
-        <img src="../images/Demo.png" style="float:left"/>
+        <img src="../images/Demo.png" style="float:left" />
         <p style="float:left;font-size: 3em;margin-top:1em;">Demo 2 </p>
       </article>
     </slide>
@@ -313,9 +309,9 @@
         <h3>Now it is your turn</h3>
       </hgroup>
       <article>
-        <img src="../images/Demo.png" style="float:left"/>
-        <p style="float:left; margin-top:1em;">This will be a competition where your task is to steal the secrets of other users 
-          (similar to the video you watched before today) </p>
+        <img src="../images/Demo.png" style="float:left" />
+        <p style="float:left; margin-top:1em;">This will be a competition where your task is to steal the secrets of other
+          users (similar to the video you watched before today) </p>
       </article>
     </slide>
     <slide>
@@ -337,8 +333,8 @@
                 <em>something more</em>"</li>
               <br/>
               <li>Depending on the "
-                <em>something more</em>" above and the "stupidity" of the designer, the hacker will steal the session id's belonging
-                to other users
+                <em>something more</em>" above and the "stupidity" of the designer, the hacker will steal the session id's
+                belonging to other users
               </li>
               <br/>
               <li>If 2 was a "success" the hacker will enter the site (using the stolen session id's), and steal other users
@@ -362,7 +358,7 @@
     </script>
 
 
-    
+
 
     <slide>
       <hgroup>
@@ -371,7 +367,7 @@
       <article style="margin-top: 30px;">
         <div class="row">
           <div class="col-md-8">
-            
+
             <img style="width:35%; margin-top: -0px;" src="images/competition.jpg">
             <p>First one to:</p>
             <ul>
@@ -379,45 +375,43 @@
               <li>Discover/reveal a secret</li>
               <li>Explains the strategy uses,step by step</li>
             </ul>
-            <span>Wins the price</span> 
-            <img src="../images/smileyBlink.jpg" style="width: 75px;"/>
+            <span>Wins the price</span>
+            <img src="../images/smileyBlink.jpg" style="width: 75px;" />
           </div>
           <div class="col-md-4">
-           <img src="images/grimbergen-double-ambrée-75-cl.jpg" style="width:90%"/>
+            <img src="images/grimbergen-double-ambrée-75-cl.jpg" style="width:90%" />
           </div>
-      </div>
-    </article>
-  </slide>
-  
+        </div>
+      </article>
+    </slide>
 
-            <slide>
-              <hgroup>
-                <h2>Bacic Security Threads</h2>
-                <h3>XSS - Discussion</h3>
 
-              </hgroup>
-              <article>
-                <div style="margin: 1.2em; font-size: 1.6em;">
-                  <ul>
-                    <li>What is XSS</li>
-                    <li>How Do we Avoid it</li>
-                    <li>Angular and XSS ??? (use Google)</li>
-                    <li>
-                      <ul>
-                        <li>React and XSS ??? (use Google)</li>
-                      </ul>
-                      <ul>
-                        <li>
-                          <a href="https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml">dangerouslySetInnerHTML</a>
-                        </li>
-                      </ul>
-                    </li>
+    <slide>
+      <hgroup>
+        <h2>XSS - How to avoid</h2>
+        <h3></h3>
 
-                  </ul>
-                </div>
-              </article>
-            </slide>
-<!--
+      </hgroup>
+      <article>
+        <div style="margin: 1.2em; font-size: 1.6em;">
+          <ul>
+            <li>So, after all this - What is XSS ?</li>
+            <li>How Do we Avoid it ? </br> 
+              <a href="https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet#RULE_.231_-_HTML_Escape_Before_Inserting_Untrusted_Data_into_HTML_Element_Content">Prevention Cheat Sheet</a>
+            </li>
+            <li>React and XSS ?</li>
+              <ul>
+                <li>
+                  <a href="https://facebook.github.io/react/docs/dom-elements.html#dangerouslysetinnerhtml">dangerouslySetInnerHTML</a>
+                </li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </article>
+    </slide>
+    <!--
             <slide>
               <hgroup>
                 
@@ -540,24 +534,24 @@
           -->
 
 
-            <slide class="nobackground" style="background: #00163B">
-              <aside class="gdbar right">
-                <img src="../images/logo.png" style="width: 200px;">
-              </aside>
-              <hgroup>
+    <slide class="nobackground" style="background: #00163B">
+      <aside class="gdbar right">
+        <img src="../images/logo.png" style="width: 200px;">
+      </aside>
+      <hgroup>
 
-              </hgroup>
-              <article class="flexbox  auto-fadein" style="margin-top: 25%;">
-
-
-              </article>
-              <p class="auto-fadein" data-config-contact>
-                <!-- populated from slide_config.json -->
-              </p>
-            </slide>
+      </hgroup>
+      <article class="flexbox  auto-fadein" style="margin-top: 25%;">
 
 
-            <slide class="backdrop"></slide>
+      </article>
+      <p class="auto-fadein" data-config-contact>
+        <!-- populated from slide_config.json -->
+      </p>
+    </slide>
+
+
+    <slide class="backdrop"></slide>
 
   </slides>
 

@@ -2,8 +2,8 @@ var SLIDE_CONFIG = {
   // Slide settings
   settings: {
     title: 'Security',
-    subtitle: 'OWASP Threads A2, A5 and A7',
-    date: 'Spring - 2018',
+    subtitle: 'OWASP A7 - Cross Site Scripting',
+    date: 'Fall - 2018',
     //eventInfo: {
     //  title: 'Google I/O',
     //  date: '6/x/2013'
